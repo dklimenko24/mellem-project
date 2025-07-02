@@ -6,44 +6,42 @@ function Preview() {
   const previewRef = useRef(null)
   const { text, style } = state
 
-  // Calculate dimensions based on size and orientation
+  // Calculate dimensions based on custom size and orientation
   const getDimensions = () => {
-    const sizes = {
-      '9x12': { w: 360, h: 270 },
-      '13x18': { w: 520, h: 390 },
-      '17x23': { w: 680, h: 510 },
-      '18x24': { w: 720, h: 540 },
-      '30x40': { w: 600, h: 450 },
-      '40x60': { w: 800, h: 600 }
-    }
+    const baseWidth = style.width * 40 // Scale factor for display
+    const baseHeight = style.height * 40
     
-    const base = sizes[style.size] || sizes['13x18']
     return style.orientation === 'vertical' 
-      ? { width: base.h, height: base.w }
-      : { width: base.w, height: base.h }
+      ? { width: baseHeight, height: baseWidth }
+      : { width: baseWidth, height: baseHeight }
   }
 
   const dimensions = getDimensions()
   const isOval = style.shape === 'oval'
 
+  // Limit display size for mobile
+  const maxDisplayWidth = Math.min(dimensions.width, 350)
+  const maxDisplayHeight = Math.min(dimensions.height, 280)
+  const scale = Math.min(maxDisplayWidth / dimensions.width, maxDisplayHeight / dimensions.height)
+
   const plaqueStyle = {
-    width: `${Math.min(dimensions.width, 400)}px`,
-    height: `${Math.min(dimensions.height, 300)}px`,
+    width: `${dimensions.width * scale}px`,
+    height: `${dimensions.height * scale}px`,
     backgroundColor: '#ffffff',
-    borderRadius: isOval ? '50%' : '8px',
-    border: '2px solid #000000',
+    borderRadius: isOval ? '50%' : '12px',
+    border: '3px solid #1f2937',
     fontFamily: style.fontFamily,
-    fontSize: `${style.fontSize}px`,
-    aspectRatio: `${dimensions.width} / ${dimensions.height}`
+    fontSize: `${style.fontSize * scale}px`,
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
   }
 
   return (
-    <div className="bg-gray-800 rounded-2xl p-6 shadow-xl">
-      <div className="flex items-center justify-center">
+    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 border border-slate-700">
+      <div className="flex items-center justify-center min-h-[300px]">
         <div 
           ref={previewRef}
           data-preview="true"
-          className="bg-white shadow-lg relative flex flex-col items-center justify-center p-6 text-center text-black"
+          className="bg-white relative flex flex-col items-center justify-center p-6 text-center text-black transition-all duration-300"
           style={plaqueStyle}
         >
           {/* Full Name */}
@@ -55,18 +53,22 @@ function Preview() {
           
           {/* Dates */}
           {text.dates && (
-            <div className="mb-4 opacity-80" style={{ fontSize: `${style.fontSize * 0.8}px` }}>
+            <div className="mb-4 opacity-80" style={{ fontSize: `${style.fontSize * scale * 0.8}px` }}>
               {text.dates}
             </div>
           )}
           
           {/* Epitaph */}
           {text.epitaph && (
-            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${style.fontSize * 0.6}px` }}>
+            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${style.fontSize * scale * 0.6}px` }}>
               {text.epitaph}
             </div>
           )}
         </div>
+      </div>
+      
+      <div className="text-center mt-4 text-sm text-slate-400">
+        {style.width}×{style.height} см • {style.orientation === 'horizontal' ? 'Горизонтальная' : 'Вертикальная'}
       </div>
     </div>
   )

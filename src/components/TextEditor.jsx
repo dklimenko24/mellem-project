@@ -1,42 +1,7 @@
 import React from 'react'
 import { usePlaque } from '../context/PlaqueContext'
-
-const fonts = [
-  { name: 'Good Vibes Pro', label: 'A01 — Good Vibes Pro' },
-  { name: 'Kornilow', label: 'A02 — Kornilow' },
-  { name: 'Steclo', label: 'A03 — Steclo' },
-  { name: 'Merriweather', label: 'A04 — Merriweather' },
-  { name: 'Nuqun', label: 'A05 — Nuqun' },
-  { name: 'Playfair Display', label: 'A06 — Playfair Display' },
-  { name: 'Montserrat', label: 'A07 — Montserrat' },
-  { name: 'Raleway-v4020', label: 'A08 — Raleway-v4020' },
-  { name: 'Arimo', label: 'A09 — Arimo' },
-  { name: 'Oswald', label: 'A10 — Oswald' },
-  { name: 'Bitter Pro', label: 'A11 — Bitter Pro' },
-  { name: 'Roboto Slab', label: 'A12 — Roboto Slab' },
-  { name: 'Goznak', label: 'A13 — Goznak' },
-  { name: 'Droid Serif', label: 'A14 — Droid Serif' },
-  { name: 'Novelist', label: 'A15 — Novelist' },
-  { name: 'Noto Serif', label: 'A16 — Noto Serif' },
-  { name: 'Source Sans Pro', label: 'A17 — Source Sans Pro' },
-  { name: 'Lobster', label: 'A18 — Lobster' },
-  { name: 'Germano', label: 'A19 — Germano' },
-  { name: 'Gamestation', label: 'A20 — Gamestation' },
-  { name: 'Fira Sans', label: 'A21 — Fira Sans' },
-  { name: 'Cruinn', label: 'A22 — Cruinn' },
-  { name: 'Quicksand', label: 'A23 — Quicksand' },
-  { name: 'Nunito', label: 'A24 — Nunito' },
-  { name: 'Actinia', label: 'A25 — Actinia' },
-  { name: 'PTSans', label: 'A26 — PTSans' },
-  { name: 'BLAGOVEST_2', label: 'A27 — BLAGOVEST_2' },
-  { name: 'Exo 2.0', label: 'A28 — Exo 2.0' },
-  { name: 'Revard', label: 'A29 — Revard' },
-  { name: 'Yeseva One', label: 'A30 — Yeseva One' },
-  { name: 'Tipotype', label: 'A31 — Tipotype' },
-  { name: 'Spectral', label: 'A32 — Spectral' },
-  { name: 'Vasek', label: 'A33 — Vasek' },
-  { name: 'Sweet', label: 'A34 — Sweet' }
-]
+import FontSelector from './FontSelector'
+import SizeInput from './SizeInput'
 
 function TextEditor() {
   const { state, dispatch } = usePlaque()
@@ -50,161 +15,147 @@ function TextEditor() {
     dispatch({ type: 'UPDATE_STYLE', field, value })
   }
 
+  const handleSizeChange = (width, height) => {
+    dispatch({ type: 'UPDATE_SIZE', width, height })
+  }
+
+  const handleFontChange = (fontFamily) => {
+    dispatch({ type: 'UPDATE_STYLE', field: 'fontFamily', value: fontFamily })
+  }
+
   return (
     <div className="space-y-6">
-      <h2 className="text-lg font-semibold text-white mb-4">Редактирование</h2>
-      
-      <div className="space-y-6">
-        {/* Text Fields */}
+      {/* Font Selector - First */}
+      <FontSelector 
+        currentFont={style.fontFamily}
+        onFontChange={handleFontChange}
+      />
+
+      {/* Text Fields */}
+      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+        <h3 className="text-lg font-semibold text-white mb-4">Текст</h3>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               ФИО
             </label>
             <input
               type="text"
               value={text.fullName}
               onChange={(e) => handleTextChange('fullName', e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+              className="w-full bg-slate-700 border border-slate-600 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg transition-all duration-200"
               placeholder="Фамилия Имя Отчество"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Даты жизни
             </label>
             <input
               type="text"
               value={text.dates}
               onChange={(e) => handleTextChange('dates', e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+              className="w-full bg-slate-700 border border-slate-600 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg transition-all duration-200"
               placeholder="дд.мм.гггг – дд.мм.гггг"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Эпитафия
             </label>
             <textarea
               value={text.epitaph}
               onChange={(e) => handleTextChange('epitaph', e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg h-24 resize-none"
+              className="w-full bg-slate-700 border border-slate-600 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg h-28 resize-none transition-all duration-200"
               placeholder="Памятный текст"
             />
           </div>
         </div>
+      </div>
 
-        {/* Font Selection */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Шрифт
-          </label>
-          <select
-            value={style.fontFamily}
-            onChange={(e) => handleStyleChange('fontFamily', e.target.value)}
-            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            {fonts.map((font) => (
-              <option key={font.name} value={font.name}>
-                {font.label}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Font Size */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Размер шрифта: {style.fontSize}px
-          </label>
+      {/* Font Size */}
+      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+        <h3 className="text-lg font-semibold text-white mb-4">Размер шрифта</h3>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-slate-300">{style.fontSize}px</span>
+            <div className="text-sm text-slate-400">12px - 48px</div>
+          </div>
           <input
             type="range"
             min="12"
             max="48"
             value={style.fontSize}
             onChange={(e) => handleStyleChange('fontSize', parseInt(e.target.value))}
-            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+            className="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
           />
         </div>
+      </div>
 
-        {/* Shape */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Форма таблички
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { value: 'rectangle', label: 'Прямоугольная' },
-              { value: 'oval', label: 'Овальная' }
-            ].map(({ value, label }) => (
-              <button
-                key={value}
-                onClick={() => handleStyleChange('shape', value)}
-                className={`p-3 rounded-xl border transition-all ${
-                  style.shape === value
-                    ? 'bg-blue-600 border-blue-500 text-white'
-                    : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+      {/* Size Input */}
+      <SizeInput 
+        width={style.width}
+        height={style.height}
+        onSizeChange={handleSizeChange}
+      />
+
+      {/* Shape and Orientation */}
+      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+        <h3 className="text-lg font-semibold text-white mb-4">Форма и ориентация</h3>
+        
+        <div className="space-y-6">
+          {/* Shape */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-3">
+              Форма таблички
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { value: 'rectangle', label: 'Прямоугольная', icon: '▭' },
+                { value: 'oval', label: 'Овальная', icon: '⬭' }
+              ].map(({ value, label, icon }) => (
+                <button
+                  key={value}
+                  onClick={() => handleStyleChange('shape', value)}
+                  className={`p-4 rounded-xl border transition-all duration-200 ${
+                    style.shape === value
+                      ? 'bg-blue-600 border-blue-500 text-white'
+                      : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{icon}</div>
+                  <div className="text-sm font-medium">{label}</div>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Orientation */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Ориентация
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { value: 'horizontal', label: 'Горизонтальная' },
-              { value: 'vertical', label: 'Вертикальная' }
-            ].map(({ value, label }) => (
-              <button
-                key={value}
-                onClick={() => handleStyleChange('orientation', value)}
-                className={`p-3 rounded-xl border transition-all ${
-                  style.orientation === value
-                    ? 'bg-blue-600 border-blue-500 text-white'
-                    : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Size */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Размер таблички
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { value: '9x12', label: '9×12 см' },
-              { value: '13x18', label: '13×18 см' },
-              { value: '17x23', label: '17×23 см' },
-              { value: '18x24', label: '18×24 см' },
-              { value: '30x40', label: '30×40 см' },
-              { value: '40x60', label: '40×60 см' }
-            ].map(({ value, label }) => (
-              <button
-                key={value}
-                onClick={() => handleStyleChange('size', value)}
-                className={`p-3 rounded-xl border transition-all text-sm ${
-                  style.size === value
-                    ? 'bg-blue-600 border-blue-500 text-white'
-                    : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+          {/* Orientation */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-3">
+              Ориентация
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { value: 'horizontal', label: 'Горизонтальная', icon: '⬜' },
+                { value: 'vertical', label: 'Вертикальная', icon: '▬' }
+              ].map(({ value, label, icon }) => (
+                <button
+                  key={value}
+                  onClick={() => handleStyleChange('orientation', value)}
+                  className={`p-4 rounded-xl border transition-all duration-200 ${
+                    style.orientation === value
+                      ? 'bg-blue-600 border-blue-500 text-white'
+                      : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{icon}</div>
+                  <div className="text-sm font-medium">{label}</div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

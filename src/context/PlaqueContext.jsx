@@ -13,7 +13,8 @@ const initialState = {
     fontSize: 24,
     shape: 'rectangle',
     orientation: 'horizontal',
-    size: '13x18'
+    width: 13,
+    height: 18
   }
 }
 
@@ -28,6 +29,15 @@ function plaqueReducer(state, action) {
       return {
         ...state,
         style: { ...state.style, [action.field]: action.value }
+      }
+    case 'UPDATE_SIZE':
+      return {
+        ...state,
+        style: { 
+          ...state.style, 
+          width: action.width, 
+          height: action.height 
+        }
       }
     case 'RESET':
       return initialState
