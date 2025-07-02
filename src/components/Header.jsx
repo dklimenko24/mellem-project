@@ -6,24 +6,24 @@ function Header() {
   const { dispatch } = usePlaque()
 
   const handleReset = () => {
-    if (confirm('Сбросить все изменения?')) {
+    if (confirm('Очистить все поля?')) {
       dispatch({ type: 'RESET' })
     }
   }
 
   return (
-    <header className="bg-dark-800 border-b border-dark-700 p-4">
+    <header className="bg-gray-800 border-b border-gray-700 p-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">
+        <h1 className="text-xl font-bold text-white">
           Редактор табличек
         </h1>
         
         <button
           onClick={handleReset}
-          className="btn-icon"
-          title="Сбросить"
+          className="w-10 h-10 rounded-lg bg-gray-700 hover:bg-gray-600 flex items-center justify-center transition-colors"
+          title="Очистить"
         >
-          <RotateCcw size={20} />
+          <RotateCcw size={18} className="text-white" />
         </button>
       </div>
     </header>

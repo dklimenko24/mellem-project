@@ -1,51 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from './components/Header'
 import Preview from './components/Preview'
-import BottomNavigation from './components/BottomNavigation'
 import TextEditor from './components/TextEditor'
-import StyleEditor from './components/StyleEditor'
-import FrameEditor from './components/FrameEditor'
-import ExportPanel from './components/ExportPanel'
+import ExportButton from './components/ExportButton'
 import { PlaqueProvider } from './context/PlaqueContext'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('text')
-
-  const renderActivePanel = () => {
-    switch (activeTab) {
-      case 'text':
-        return <TextEditor />
-      case 'style':
-        return <StyleEditor />
-      case 'frame':
-        return <FrameEditor />
-      case 'export':
-        return <ExportPanel />
-      default:
-        return <TextEditor />
-    }
-  }
-
   return (
     <PlaqueProvider>
-      <div className="min-h-screen bg-dark-900 flex flex-col">
+      <div className="min-h-screen bg-gray-900 flex flex-col">
         <Header />
         
-        <main className="flex-1 flex flex-col lg:flex-row">
+        <main className="flex-1 flex flex-col p-4 space-y-6">
           {/* Preview Section */}
-          <div className="lg:w-1/2 p-4">
+          <div className="flex-shrink-0">
             <Preview />
           </div>
           
-          {/* Editor Panel */}
-          <div className="lg:w-1/2 flex flex-col">
-            <div className="flex-1 p-4 pb-20 lg:pb-4 overflow-y-auto">
-              {renderActivePanel()}
-            </div>
+          {/* Text Editor */}
+          <div className="flex-1">
+            <TextEditor />
+          </div>
+          
+          {/* Export Button */}
+          <div className="pb-4">
+            <ExportButton />
           </div>
         </main>
-        
-        <BottomNavigation activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </PlaqueProvider>
   )

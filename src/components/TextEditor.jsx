@@ -11,76 +11,47 @@ function TextEditor() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-semibold text-white mb-4">Редактирование текста</h2>
+      <h2 className="text-lg font-semibold text-white mb-4">Введите текст</h2>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-2">
-            Фамилия *
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            ФИО
           </label>
           <input
             type="text"
-            value={text.surname}
-            onChange={(e) => handleTextChange('surname', e.target.value)}
-            className="input-field w-full"
-            placeholder="Введите фамилию"
+            value={text.fullName}
+            onChange={(e) => handleTextChange('fullName', e.target.value)}
+            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+            placeholder="Фамилия Имя Отчество"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-2">
-            Имя
-          </label>
-          <input
-            type="text"
-            value={text.name}
-            onChange={(e) => handleTextChange('name', e.target.value)}
-            className="input-field w-full"
-            placeholder="Введите имя"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-dark-300 mb-2">
-            Отчество
-          </label>
-          <input
-            type="text"
-            value={text.patronymic}
-            onChange={(e) => handleTextChange('patronymic', e.target.value)}
-            className="input-field w-full"
-            placeholder="Введите отчество"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-dark-300 mb-2">
+          <label className="block text-sm font-medium text-gray-300 mb-2">
             Даты жизни
           </label>
           <input
             type="text"
             value={text.dates}
             onChange={(e) => handleTextChange('dates', e.target.value)}
-            className="input-field w-full"
-            placeholder="дд.мм.гггг–дд.мм.гггг"
+            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+            placeholder="дд.мм.гггг – дд.мм.гггг"
           />
-          <p className="text-xs text-dark-400 mt-1">
-            Формат: дд.мм.гггг–дд.мм.гггг
-          </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-2">
+          <label className="block text-sm font-medium text-gray-300 mb-2">
             Эпитафия
           </label>
           <textarea
             value={text.epitaph}
             onChange={(e) => handleTextChange('epitaph', e.target.value)}
-            className="input-field w-full h-24 resize-none"
-            placeholder="Введите эпитафию"
+            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg h-24 resize-none"
+            placeholder="Памятный текст"
           />
-          <p className="text-xs text-dark-400 mt-1">
-            Текст будет автоматически переноситься на несколько строк
+          <p className="text-xs text-gray-400 mt-1">
+            Используйте Enter для переноса строк
           </p>
         </div>
       </div>

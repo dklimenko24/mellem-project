@@ -4,34 +4,9 @@ const PlaqueContext = createContext()
 
 const initialState = {
   text: {
-    surname: 'Петрова',
-    name: 'Ирина',
-    patronymic: 'Васильевна',
-    dates: '12.03.1898–14.05.1973',
-    epitaph: 'Сердце помнит даже то, что глаза больше не видят.'
-  },
-  style: {
-    fontFamily: 'Good Vibes Pro',
-    fontSize: 24,
-    textColor: '#000000',
-    backgroundColor: '#ffffff',
-    textAlign: 'center',
-    shape: 'rectangle',
-    orientation: 'horizontal',
-    size: '13x18'
-  },
-  frame: {
-    type: 'classic',
-    style: 'simple',
-    color: '#000000',
-    width: 2
-  },
-  textPositions: {
-    surname: { x: 50, y: 25 },
-    name: { x: 50, y: 40 },
-    patronymic: { x: 50, y: 55 },
-    dates: { x: 50, y: 70 },
-    epitaph: { x: 50, y: 85 }
+    fullName: 'Петрова Ирина Васильевна',
+    dates: '12.03.1898 – 14.05.1973',
+    epitaph: 'Сердце помнит даже то,\nчто глаза больше не видят.'
   }
 }
 
@@ -41,24 +16,6 @@ function plaqueReducer(state, action) {
       return {
         ...state,
         text: { ...state.text, [action.field]: action.value }
-      }
-    case 'UPDATE_STYLE':
-      return {
-        ...state,
-        style: { ...state.style, [action.field]: action.value }
-      }
-    case 'UPDATE_FRAME':
-      return {
-        ...state,
-        frame: { ...state.frame, [action.field]: action.value }
-      }
-    case 'UPDATE_TEXT_POSITION':
-      return {
-        ...state,
-        textPositions: {
-          ...state.textPositions,
-          [action.field]: action.position
-        }
       }
     case 'RESET':
       return initialState
