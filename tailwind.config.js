@@ -1,0 +1,76 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#f0f9ff',
+          500: '#4361ee',
+          600: '#3a0ca3',
+          700: '#2d1b69',
+        },
+        accent: {
+          500: '#f72585',
+          600: '#d90368',
+        },
+        dark: {
+          50: '#f8f9fa',
+          100: '#e9ecef',
+          200: '#dee2e6',
+          300: '#ced4da',
+          400: '#adb5bd',
+          500: '#6c757d',
+          600: '#495057',
+          700: '#343a40',
+          800: '#212529',
+          900: '#1a1d20',
+        }
+      },
+      fontFamily: {
+        'good-vibes': ['Good Vibes Pro', 'cursive'],
+        'kornilow': ['Kornilow', 'serif'],
+        'steclo': ['Steclo', 'sans-serif'],
+        'merriweather': ['Merriweather', 'serif'],
+        'nuqun': ['Nuqun', 'serif'],
+        'playfair': ['Playfair Display', 'serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'raleway': ['Raleway-v4020', 'sans-serif'],
+        'arimo': ['Arimo', 'sans-serif'],
+        'oswald': ['Oswald', 'sans-serif'],
+        'bitter': ['Bitter Pro', 'serif'],
+        'roboto-slab': ['Roboto Slab', 'serif'],
+        'goznak': ['Goznak', 'sans-serif'],
+        'droid': ['Droid Serif', 'serif'],
+        'novelist': ['Novelist', 'serif'],
+        'noto': ['Noto Serif', 'serif'],
+        'source': ['Source Sans Pro', 'sans-serif'],
+        'lobster': ['Lobster', 'cursive'],
+        'germano': ['Germano', 'serif'],
+        'gamestation': ['Gamestation', 'sans-serif'],
+        'fira': ['Fira Sans', 'sans-serif'],
+        'cruinn': ['Cruinn', 'sans-serif'],
+        'quicksand': ['Quicksand', 'sans-serif'],
+        'nunito': ['Nunito', 'sans-serif'],
+        'actinia': ['Actinia', 'serif'],
+        'ptsans': ['PTSans', 'sans-serif'],
+        'blagovest': ['BLAGOVEST_2', 'serif'],
+        'exo': ['Exo 2.0', 'sans-serif'],
+        'revard': ['Revard', 'serif'],
+        'yeseva': ['Yeseva One', 'serif'],
+        'tipotype': ['Tipotype', 'sans-serif'],
+        'spectral': ['Spectral', 'serif'],
+        'vasek': ['Vasek', 'serif'],
+        'sweet': ['Sweet', 'cursive'],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      }
+    },
+  },
+  plugins: [],
+}
