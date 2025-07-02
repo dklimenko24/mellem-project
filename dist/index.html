@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Редактор табличек Mellem.RU</title>
+  
+  <!-- Font declarations -->
+  <style>
+    @font-face { font-family: 'Good Vibes Pro'; src: url('/assets/GoodVibesPro-B5wm-6SV.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Kornilow'; src: url('/assets/Kornilow-D0TzPrhy.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Steclo'; src: url('/assets/Steclo-ExtraLight-BVqly_x2.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Merriweather'; src: url('/assets/Merriweather-Black-CKO7G2j1.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Nuqun'; src: url('/assets/Nuqun-Regular-C5WtDTHQ.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Playfair Display'; src: url('/assets/PlayfairDisplay-Italic-Dy4yWnYZ.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Montserrat'; src: url('/assets/Montserrat-Thin-DngKp9mp.woff2') format('woff2'); font-display: swap; font-weight: 100; font-style: normal; }
+    @font-face { font-family: 'Raleway-v4020'; src: url('/assets/Raleway-v4020-Bold-sGG9zyFU.woff2') format('woff2'); font-display: swap; font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'Arimo'; src: url('/assets/Arimo-Italic-ZmWkv9Te.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Oswald'; src: url('/assets/Oswald-ExtraLight-0SFg6Xx2.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Bitter Pro'; src: url('/assets/BitterPro-LightItalic-B_buIMbc.woff2') format('woff2'); font-display: swap; font-weight: 300; font-style: italic; }
+    @font-face { font-family: 'Roboto Slab'; src: url('/assets/RobotoSlab-Regular-7coxlwU6.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Goznak'; src: url('/assets/Goznak-SemiBold-CX348iGF.woff2') format('woff2'); font-display: swap; font-weight: 600; font-style: normal; }
+    @font-face { font-family: 'Droid Serif'; src: url('/assets/DroidSerif--o-Oj2dT.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Novelist'; src: url('/assets/Novelist-Display-Dd7iMCxt.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Noto Serif'; src: url('/assets/NotoSerif-Thin-dLWJZrau.woff2') format('woff2'); font-display: swap; font-weight: 100; font-style: normal; }
+    @font-face { font-family: 'Source Sans Pro'; src: url('/assets/SourceSansPro-SemiBold-CZ8tEVqY.woff2') format('woff2'); font-display: swap; font-weight: 600; font-style: normal; }
+    @font-face { font-family: 'Lobster'; src: url('/assets/Lobster-Regular-yZ39ABTN.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Germano'; src: url('/assets/Germano-Regular-BrA3HZAp.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Gamestation'; src: url('/assets/Gamestation-Condensed-DTrO_IOH.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Fira Sans'; src: url('/assets/FiraSans-Black-Bb04ddBW.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Cruinn'; src: url('/assets/Cruinn-Light-BR79uAeQ.woff2') format('woff2'); font-display: swap; font-weight: 300; font-style: normal; }
+    @font-face { font-family: 'Quicksand'; src: url('/assets/Quicksand-Regular-C9VWjiXu.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Nunito'; src: url('/assets/Nunito-Black-vYsMil-X.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Actinia'; src: url('/assets/Actinia-Regular-DGy8zlsp.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'PTSans'; src: url('/assets/PTSans-Bold-BDev1Knm.woff2') format('woff2'); font-display: swap; font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'BLAGOVEST_2'; src: url('/assets/BLAGOVEST_2-D4w1z7OX.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Exo 2.0'; src: url('/assets/Exo20-ExtraBold-ngWlFsQY.woff2') format('woff2'); font-display: swap; font-weight: 800; font-style: normal; }
+    @font-face { font-family: 'Revard'; src: url('/assets/Revard-Regular-BgSmgvu9.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Yeseva One'; src: url('/assets/YesevaOne-Regular-C76IPtx_.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Tipotype'; src: url('/assets/Tipotype-cW3UrWsj.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Spectral'; src: url('/assets/Spectral-ExtraLight-DjnYwTw3.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Vasek'; src: url('/assets/Vasek-Italic-p3GG-Thn.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Sweet'; src: url('/assets/SweetMavkaScript-w_eiiMkE.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+  </style>
+  <script type="module" crossorigin src="/assets/index-DqMSEHy4.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BZJpQREN.css">
+</head>
+<body class="bg-dark-900 text-white">
+  <div id="root"></div>
+</body>
+</html>
