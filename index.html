@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор табличек Mellem.RU</title>
+  
+  <!-- Оптимизированные объявления шрифтов -->
+  <style>
+    /* Группировка по семействам с разными начертаниями */
+    @font-face { font-family: 'Good Vibes Pro'; src: url('fonts/GoodVibesPro.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Kornilow'; src: url('fonts/Kornilow.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Steclo'; src: url('fonts/Steclo-ExtraLight.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Merriweather'; src: url('fonts/Merriweather-Black.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Nuqun'; src: url('fonts/Nuqun-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Playfair Display'; src: url('fonts/PlayfairDisplay-Italic.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Montserrat'; src: url('fonts/Montserrat-Thin.woff2') format('woff2'); font-display: swap; font-weight: 100; font-style: normal; }
+    @font-face { font-family: 'Raleway-v4020'; src: url('fonts/Raleway-v4020-Bold.woff2') format('woff2'); font-display: swap; font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'Arimo'; src: url('fonts/Arimo-Italic.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Oswald'; src: url('fonts/Oswald-ExtraLight.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Bitter Pro'; src: url('fonts/BitterPro-LightItalic.woff2') format('woff2'); font-display: swap; font-weight: 300; font-style: italic; }
+    @font-face { font-family: 'Roboto Slab'; src: url('fonts/RobotoSlab-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Goznak'; src: url('fonts/Goznak-SemiBold.woff2') format('woff2'); font-display: swap; font-weight: 600; font-style: normal; }
+    @font-face { font-family: 'Droid Serif'; src: url('fonts/DroidSerif.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Novelist'; src: url('fonts/Novelist-Display.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Noto Serif'; src: url('fonts/NotoSerif-Thin.woff2') format('woff2'); font-display: swap; font-weight: 100; font-style: normal; }
+    @font-face { font-family: 'Source Sans Pro'; src: url('fonts/SourceSansPro-SemiBold.woff2') format('woff2'); font-display: swap; font-weight: 600; font-style: normal; }
+    @font-face { font-family: 'Lobster'; src: url('fonts/Lobster-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Germano'; src: url('fonts/Germano-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Gamestation'; src: url('fonts/Gamestation-Condensed.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Fira Sans'; src: url('fonts/FiraSans-Black.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Cruinn'; src: url('fonts/Cruinn-Light.woff2') format('woff2'); font-display: swap; font-weight: 300; font-style: normal; }
+    @font-face { font-family: 'Quicksand'; src: url('fonts/Quicksand-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Nunito'; src: url('fonts/Nunito-Black.woff2') format('woff2'); font-display: swap; font-weight: 900; font-style: normal; }
+    @font-face { font-family: 'Actinia'; src: url('fonts/Actinia-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'PTSans'; src: url('fonts/PTSans-Bold.woff2') format('woff2'); font-display: swap; font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'BLAGOVEST_2'; src: url('fonts/BLAGOVEST_2.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Exo 2.0'; src: url('fonts/Exo20-ExtraBold.woff2') format('woff2'); font-display: swap; font-weight: 800; font-style: normal; }
+    @font-face { font-family: 'Revard'; src: url('fonts/Revard-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Yeseva One'; src: url('fonts/YesevaOne-Regular.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Tipotype'; src: url('fonts/Tipotype.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Spectral'; src: url('fonts/Spectral-ExtraLight.woff2') format('woff2'); font-display: swap; font-weight: 200; font-style: normal; }
+    @font-face { font-family: 'Vasek'; src: url('fonts/Vasek-Italic.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Sweet'; src: url('fonts/SweetMavkaScript.woff2') format('woff2'); font-display: swap; font-weight: 400; font-style: normal; }
+  </style>
+  
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --success: #4bb543;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    
+    h1 {
+      margin: 0 0 20px;
+      font-size: 1.8rem;
+      text-align: center;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .editor-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .preview-section {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      position: relative;
+    }
+    
+    .hint {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: -4px;
+    }
+    
+    input, select, textarea {
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    
+    select {
+      color: white;
+      background-color: rgba(255,255,255,0.1);
+    }
+    
+    select option {
+      background: var(--dark);
+      color: white;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67,97,238,0.3);
+    }
+    
+    .color-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    
+    .color-option {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.2s;
+    }
+    
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+    
+    .color-option.active {
+      border-color: white;
+      transform: scale(1.1);
+    }
+    
+    .buttons-row {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .btn {
+      padding: 14px 24px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      flex: 1;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 4px 15px rgba(67,97,238,0.3);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-success {
+      background: var(--success);
+      box-shadow: 0 4px 15px rgba(75, 181, 67, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(67,97,238,0.4);
+    }
+    
+    .btn:disabled {
+      background: var(--gray);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      opacity: 0.7;
+    }
+    
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+    
+    .font-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    
+    .nav-btn:hover {
+      background: var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .font-counter {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-align: center;
+      flex: 1;
+    }
+    
+    .loader {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 10;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top: 4px solid var(--primary);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    
+    .status-message {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+    
+    .status-message.show {
+      opacity: 1;
+    }
+    
+    @keyframes spin {
+      0% { transform: translate(-50%,-50%) rotate(0deg); }
+      100% { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 1.5rem; }
+      .controls { grid-template-columns: 1fr; }
+      .buttons-row { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Редактор табличек Mellem.RU</h1>
+  <div class="editor-container">
+    <div class="preview-section">
+      <canvas id="canvas" width="600" height="450"></canvas>
+      <div class="loader" id="loader"></div>
+    </div>
+    <div class="controls">
+      <div class="control-group">
+        <label>Форма таблички
+          <select id="shapeSelect">
+            <option value="rectangle">Прямоугольная</option>
+            <option value="oval">Овальная</option>
+          </select>
+        </label>
+        <label>Ориентация
+          <select id="orientationSelect">
+            <option value="horizontal">Горизонтальная</option>
+            <option value="vertical">Вертикальная</option>
+          </select>
+        </label>
+        <label>Размер таблички
+          <select id="sizeSelect">
+            <option value="9x12">9×12 см</option>
+            <option value="13x18">13×18 см</option>
+            <option value="17x23">17×23 см</option>
+          </select>
+        </label>
+        <label>Цвет фона
+          <div class="color-options">
+            <div class="color-option active" data-color="#ffffff" style="background-color: #ffffff;" title="Белый"></div>
+            <div class="color-option" data-color="#f8f9fa" style="background-color: #f8f9fa;" title="Светло-серый"></div>
+            <div class="color-option" data-color="#e9ecef" style="background-color: #e9ecef;" title="Серый"></div>
+            <div class="color-option" data-color="#dee2e6" style="background-color: #dee2e6;" title="Серый"></div>
+            <div class="color-option" data-color="#ced4da" style="background-color: #ced4da;" title="Тёмно-серый"></div>
+            <div class="color-option" data-color="#adb5bd" style="background-color: #adb5bd;" title="Тёмно-серый"></div>
+            <div class="color-option" data-color="#6c757d" style="background-color: #6c757d;" title="Серый"></div>
+            <div class="color-option" data-color="#495057" style="background-color: #495057;" title="Тёмно-серый"></div>
+          </div>
+        </label>
+      </div>
+      <div class="control-group">
+        <label>Выбор шрифта
+          <select id="fontSelect">
+            <option value="Good Vibes Pro">A01 — Good Vibes Pro</option>
+            <option value="Kornilow">A02 — Kornilow</option>
+            <option value="Steclo">A03 — Steclo</option>
+            <option value="Merriweather">A04 — Merriweather</option>
+            <option value="Nuqun">A05 — Nuqun</option>
+            <option value="Playfair Display">A06 — Playfair Display</option>
+            <option value="Montserrat">A07 — Montserrat</option>
+            <option value="Raleway-v4020">A08 — Raleway-v4020</option>
+            <option value="Arimo">A09 — Arimo</option>
+            <option value="Oswald">A10 — Oswald</option>
+            <option value="Bitter Pro">A11 — Bitter Pro</option>
+            <option value="Roboto Slab">A12 — Roboto Slab</option>
+            <option value="Goznak">A13 — Goznak</option>
+            <option value="Droid Serif">A14 — Droid Serif</option>
+            <option value="Novelist">A15 — Novelist</option>
+            <option value="Noto Serif">A16 — Noto Serif</option>
+            <option value="Source Sans Pro">A17 — Source Sans Pro</option>
+            <option value="Lobster">A18 — Lobster</option>
+            <option value="Germano">A19 — Germano</option>
+            <option value="Gamestation">A20 — Gamestation</option>
+            <option value="Fira Sans">A21 — Fira Sans</option>
+            <option value="Cruinn">A22 — Cruinn</option>
+            <option value="Quicksand">A23 — Quicksand</option>
+            <option value="Nunito">A24 — Nunito</option>
+            <option value="Actinia">A25 — Actinia</option>
+            <option value="PTSans">A26 — PTSans</option>
+            <option value="BLAGOVEST_2">A27 — BLAGOVEST_2</option>
+            <option value="Exo 2.0">A28 — Exo 2.0</option>
+            <option value="Revard">A29 — Revard</option>
+            <option value="Yeseva One">A30 — Yeseva One</option>
+            <option value="Tipotype">A31 — Tipotype</option>
+            <option value="Spectral">A32 — Spectral</option>
+            <option value="Vasek">A33 — Vasek</option>
+            <option value="Sweet">A34 — Sweet</option>
+          </select>
+        </label>
+        <div class="font-nav">
+          <button class="nav-btn" id="prevFontBtn">
+            <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+          </button>
+          <div class="font-counter" id="fontCounter">1 / 34</div>
+          <button class="nav-btn" id="nextFontBtn">
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </button>
+        </div>
+        <label>Цвет текста
+          <div class="color-options">
+            <div class="color-option active" data-color="#000000" style="background-color: #000000;" title="Чёрный"></div>
+            <div class="color-option" data-color="#212529" style="background-color: #212529;" title="Тёмно-серый"></div>
+            <div class="color-option" data-color="#343a40" style="background-color: #343a40;" title="Тёмно-серый"></div>
+            <div class="color-option" data-color="#495057" style="background-color: #495057;" title="Серый"></div>
+            <div class="color-option" data-color="#6c757d" style="background-color: #6c757d;" title="Серый"></div>
+            <div class="color-option" data-color="#343a40" style="background-color: #343a40;" title="Тёмно-серый"></div>
+            <div class="color-option" data-color="#3a0ca3" style="background-color: #3a0ca3;" title="Тёмно-синий"></div>
+            <div class="color-option" data-color="#4361ee" style="background-color: #4361ee;" title="Синий"></div>
+          </div>
+        </label>
+      </div>
+      <div class="control-group">
+        <label>Фамилия
+          <input type="text" id="surname" placeholder="Иванов" value="Петрова">
+          <span class="hint">Обязательное поле</span>
+        </label>
+        <label>Имя
+          <input type="text" id="name" placeholder="Иван" value="Ирина">
+        </label>
+        <label>Отчество
+          <input type="text" id="patronymic" placeholder="Петрович" value="Васильевна">
+        </label>
+      </div>
+      <div class="control-group">
+        <label>Даты жизни
+          <input type="text" id="dates" placeholder="дд.мм.гггг–дд.мм.гггг" value="12.03.1898–14.05.1973">
+          <span class="hint">Формат: дд.мм.гггг–дд.мм.гггг</span>
+        </label>
+        <label>Цитата
+          <textarea id="quote" rows="2" placeholder="Введите цитату">Сердце помнит даже то, что глаза больше не видят.</textarea>
+          <span class="hint">Будет автоматически переноситься на несколько строк</span>
+        </label>
+      </div>
+      <div class="buttons-row">
+        <button class="btn btn-secondary" id="resetBtn">
+          <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          Сбросить
+        </button>
+        <button class="btn btn-primary" id="downloadBtn">
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Скачать
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="status-message" id="statusMessage"></div>
+  
+  <script>
+    // Элементы
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const loader = document.getElementById('loader');
+    const shapeSelect = document.getElementById('shapeSelect');
+    const orientationSelect = document.getElementById('orientationSelect');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const fontSelect = document.getElementById('fontSelect');
+    const surnameInput = document.getElementById('surname');
+    const nameInput = document.getElementById('name');
+    const patronymicInput = document.getElementById('patronymic');
+    const datesInput = document.getElementById('dates');
+    const quoteInput = document.getElementById('quote');
+    const prevFontBtn = document.getElementById('prevFontBtn');
+    const nextFontBtn = document.getElementById('nextFontBtn');
+    const fontCounter = document.getElementById('fontCounter');
+    const resetBtn = document.getElementById('resetBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const statusMessage = document.getElementById('statusMessage');
+    const colorOptions = document.querySelectorAll('.color-option[data-color]');
+    const textColorOptions = document.querySelectorAll('.color-option[data-color]');
+    
+    // Текущие настройки
+    let currentFont = 0;
+    let currentBgColor = '#ffffff';
+    let currentTextColor = '#000000';
+    let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    let fontsLoaded = false;
+    let debounceTimer;
+    
+    // Размеры табличек (в пикселях)
+    const cmToPx = 118.11; // 1 см = 118.11 пикселей (300 DPI)
+    const sizes = {
+      '9x12': {
+        horizontal: [Math.round(12 * cmToPx), Math.round(9 * cmToPx)],
+        vertical: [Math.round(9 * cmToPx), Math.round(12 * cmToPx)],
+        name: '9×12 см'
+      },
+      '13x18': {
+        horizontal: [Math.round(18 * cmToPx), Math.round(13 * cmToPx)],
+        vertical: [Math.round(13 * cmToPx), Math.round(18 * cmToPx)],
+        name: '13×18 см'
+      },
+      '17x23': {
+        horizontal: [Math.round(23 * cmToPx), Math.round(17 * cmToPx)],
+        vertical: [Math.round(17 * cmToPx), Math.round(23 * cmToPx)],
+        name: '17×23 см'
+      }
+    };
+    
+    // Шрифты с цитатами
+    const fonts = [
+      { name: "Good Vibes Pro", weight: "normal", style: "normal", quote: "Сердце помнит даже то, что глаза больше не видят." },
+      { name: "Kornilow", weight: "normal", style: "normal", quote: "Не уходят — просто становятся тишиной." },
+      { name: "Steclo", weight: "200", style: "normal", quote: "Разлука — это только форма, суть остаётся." },
+      { name: "Merriweather", weight: "900", style: "normal", quote: "Там, где тепло воспоминаний, нет одиночества." },
+      { name: "Nuqun", weight: "normal", style: "normal", quote: "Вечность — это лишь продолжение пути." },
+      { name: "Playfair Display", weight: "normal", style: "italic", quote: "Время стирает многое, но не любовь." },
+      { name: "Montserrat", weight: "100", style: "normal", quote: "Всё, что было светлым — остаётся." },
+      { name: "Raleway-v4020", weight: "700", style: "normal", quote: "Мы вспоминаем, значит — живём." },
+      { name: "Arimo", weight: "normal", style: "normal", quote: "Истории не заканчиваются — они продолжаются в сердцах." },
+      { name: "Oswald", weight: "normal", style: "normal", quote: "Истинное присутствие не требует формы." },
+      { name: "Bitter Pro", weight: "normal", style: "italic", quote: "Нет конца, есть только новые горизонты." },
+      { name: "Roboto Slab", weight: "normal", style: "normal", quote: "Тишина говорит громче слов." },
+      { name: "Goznak", weight: "normal", style: "normal", quote: "Всё, что дорого, живёт в нас." },
+      { name: "Droid Serif", weight: "normal", style: "normal", quote: "Пространство меняется, но связь остаётся." },
+      { name: "Novelist", weight: "normal", style: "normal", quote: "Память — это любовь, застывшая во времени." },
+      { name: "Noto Serif", weight: "normal", style: "normal", quote: "Невидимое не значит исчезнувшее." },
+      { name: "Source Sans Pro", weight: "normal", style: "normal", quote: "Любовь сильнее границ между мирами." },
+      { name: "Lobster", weight: "normal", style: "normal", quote: "Отпуская, мы находим по-новому." },
+      { name: "Germano", weight: "normal", style: "normal", quote: "Истинная разлука возможна лишь там, где не было любви." },
+      { name: "Gamestation", weight: "normal", style: "normal", quote: "Там, где свет души, нет тьмы разлуки." },
+      { name: "Fira Sans", weight: "normal", style: "normal", quote: "Жизнь продолжается в памяти." },
+      { name: "Cruinn", weight: "normal", style: "normal", quote: "Всё значимое остаётся за гранью времени." },
+      { name: "Quicksand", weight: "normal", style: "normal", quote: "The warmth of the soul does not fade over the years." },
+      { name: "Nunito", weight: "normal", style: "normal", quote: "Ничто не проходит бесследно, если оставляет свет." },
+      { name: "Actinia", weight: "normal", style: "normal", quote: "Смерть — это не прощание, а ожидание встречи." },
+      { name: "PTSans", weight: "normal", style: "normal", quote: "Память не стареет." },
+      { name: "BLAGOVEST_2", weight: "normal", style: "normal", quote: "Настоящая любовь продолжается за пределами жизни." },
+      { name: "Exo 2.0", weight: "normal", style: "normal", quote: "Тени прошлого иногда освещают путь в будущее." },
+      { name: "Revard", weight: "normal", style: "normal", quote: "Мгновения уходят, но остаётся их смысл." },
+      { name: "Yeseva One", weight: "normal", style: "normal", quote: "Истории людей живут дольше, чем сами люди." },
+      { name: "Tipotype", weight: "normal", style: "normal", quote: "Каждый шаг вперёд наполнен следами прошлого." },
+      { name: "Spectral", weight: "normal", style: "normal", quote: "Тишина — это лишь другая форма присутствия." },
+      { name: "Vasek", weight: "normal", style: "normal", quote: "Когда свет за горизонтом гаснет, он зажигается в другом месте." },
+      { name: "Sweet", weight: "normal", style: "normal", quote: "Истинная разлука возможна лишь там, где не было любви." }
+    ];
+    
+    // Коэффициенты масштабирования текста для разных размеров
+    const sizeScales = {
+      '9x12': 0.9,
+      '13x18': 0.9,
+      '17x23': 0.9
+    };
+    
+    // Проверка загрузки шрифтов
+    function checkFontsLoaded() {
+      const testString = "mmMwWLliI0O&1";
+      const testFont = fonts[0].name;
+      const fontSize = "20px";
+      
+      // Создаем два элемента для сравнения
+      const span1 = document.createElement("span");
+      span1.style.fontFamily = "monospace";
+      span1.style.fontSize = fontSize;
+      span1.textContent = testString;
+      
+      const span2 = document.createElement("span");
+      span2.style.fontFamily = `${testFont}, monospace`;
+      span2.style.fontSize = fontSize;
+      span2.textContent = testString;
+      
+      document.body.appendChild(span1);
+      document.body.appendChild(span2);
+      
+      // Сравниваем ширину
+      const width1 = span1.getBoundingClientRect().width;
+      const width2 = span2.getBoundingClientRect().width;
+      
+      document.body.removeChild(span1);
+      document.body.removeChild(span2);
+      
+      return width1 !== width2;
+    }
+    
+    // Показываем сообщение статуса
+    function showStatusMessage(message, isSuccess = true) {
+      statusMessage.textContent = message;
+      statusMessage.className = `status-message ${isSuccess ? 'show' : 'show error'}`;
+      setTimeout(() => {
+        statusMessage.className = 'status-message';
+      }, 3000);
+    }
+    
+    // Обновляем счетчик шрифтов
+    function updateCounter() {
+      fontCounter.textContent = `${currentFont + 1} / ${fonts.length}`;
+    }
+    
+    // Безопасное обновление canvas с проверкой шрифтов
+    function safeUpdateCanvas() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        if (!fontsLoaded) {
+          if (checkFontsLoaded()) {
+            fontsLoaded = true;
+            updateCanvas();
+          } else {
+            setTimeout(safeUpdateCanvas, 100);
+          }
+          return;
+        }
+        
+        if (isMobile) {
+          forceCanvasRefresh();
+          setTimeout(updateCanvas, 300);
+        } else {
+          updateCanvas();
+        }
+      }, 200);
+    }
+    
+    // Принудительное обновление canvas (для мобильных устройств)
+    function forceCanvasRefresh() {
+      const temp = canvas.width;
+      canvas.width = 1;
+      canvas.width = temp;
+    }
+    
+    // Основная функция обновления canvas
+    function updateCanvas() {
+      const orientation = orientationSelect.value;
+      const size = sizeSelect.value;
+      const [width, height] = sizes[size][orientation];
+      const scale = sizeScales[size];
+      
+      canvas.width = width;
+      canvas.height = height;
+      ctx.clearRect(0, 0, width, height);
+      
+      // Рисуем фон
+      if (shapeSelect.value === 'oval') {
+        drawOvalBackground(width, height, currentBgColor);
+      } else {
+        drawRectBackground(width, height, currentBgColor);
+      }
+      
+      // Рисуем текст
+      drawText(width, height, shapeSelect.value, orientation, scale);
+    }
+    
+    // Рисуем прямоугольный фон
+    function drawRectBackground(width, height, color) {
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, width, height);
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(10, 10, width - 20, height - 20);
+    }
+    
+    // Рисуем овальный фон
+    function drawOvalBackground(width, height, color) {
+      ctx.fillStyle = color;
+      const radiusX = width / 2 - 10;
+      const radiusY = height / 2 - 10;
+      ctx.beginPath();
+      ctx.ellipse(width / 2, height / 2, radiusX, radiusY, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.ellipse(width / 2, height / 2, radiusX, radiusY, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    
+    // Рисуем текст на табличке
+    function drawText(width, height, shape, orientation, scale) {
+      const surname = surnameInput.value.trim();
+      const name = nameInput.value.trim();
+      const patronymic = patronymicInput.value.trim();
+      const dates = datesInput.value.trim();
+      const quote = quoteInput.value.trim();
+      
+      if (!surname && !name && !patronymic && !dates && !quote) return;
+      
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = currentTextColor;
+      
+      const centerX = width / 2;
+      const maxWidth = shape === 'oval' ? width * 0.9 : width * 0.95;
+      const baseFontSize = Math.min(width * 0.1, height * 0.1) * scale;
+      const fontData = fonts[currentFont];
+      
+      // Рассчитываем оптимальный размер шрифта для фамилии
+      const surnameFontSize = calculateOptimalFontSize(
+        ctx,
+        surname || "Пример",
+        maxWidth,
+        baseFontSize * 1.5,
+        fontData.name,
+        true
+      );
+      
+      // Рассчитываем общую высоту текста
+      let totalTextHeight = 0;
+      if (surname) totalTextHeight += surnameFontSize * 1.5;
+      
+      // Имя и отчество
+      if (name || patronymic) {
+        const nameFontSize = surnameFontSize * 0.8;
+        if (orientation === 'horizontal') {
+          totalTextHeight += nameFontSize * 1.5;
+        } else {
+          if (name) totalTextHeight += nameFontSize * 1.3;
+          if (patronymic) totalTextHeight += nameFontSize * 1.5;
+        }
+      }
+      
+      // Даты
+      if (dates) {
+        const datesFontSize = surnameFontSize * 0.6;
+        totalTextHeight += datesFontSize * 1.8;
+      }
+      
+      // Цитата
+      if (quote) {
+        const quoteFontSize = surnameFontSize * 0.5;
+        const lines = wrapText(ctx, quote, maxWidth, quoteFontSize, fontData.name);
+        const lineHeight = quoteFontSize * 1.3;
+        const maxLines = Math.min(lines.length, Math.floor((height * 0.5) / lineHeight));
+        totalTextHeight += maxLines * lineHeight;
+      }
+      
+      // Начинаем рисовать текст с рассчитанной позиции
+      let currentY = (height - totalTextHeight) / 2;
+      
+      // Фамилия
+      if (surname) {
+        ctx.font = `bold ${surnameFontSize}px "${fontData.name}"`;
+        drawTextInShape(centerX, currentY + surnameFontSize / 2, surname, width, height, shape);
+        currentY += surnameFontSize * 1.5;
+      }
+      
+      // Имя и отчество
+      if (name || patronymic) {
+        const nameFontSize = surnameFontSize * 0.8;
+        ctx.font = `${fontData.weight} ${nameFontSize}px "${fontData.name}"`;
+        
+        if (orientation === 'horizontal') {
+          const fullName = `${name || ''} ${patronymic || ''}`.trim();
+          if (fullName) {
+            drawTextInShape(centerX, currentY + nameFontSize / 2, fullName, width, height, shape);
+            currentY += nameFontSize * 1.5;
+          }
+        } else {
+          if (name) {
+            drawTextInShape(centerX, currentY + nameFontSize / 2, name, width, height, shape);
+            currentY += nameFontSize * 1.3;
+          }
+          if (patronymic) {
+            drawTextInShape(centerX, currentY + nameFontSize / 2, patronymic, width, height, shape);
+            currentY += nameFontSize * 1.5;
+          }
+        }
+      }
+      
+      // Даты
+      if (dates) {
+        const datesFontSize = surnameFontSize * 0.6;
+        ctx.font = `${fontData.weight} ${datesFontSize}px "${fontData.name}"`;
+        drawTextInShape(centerX, currentY + datesFontSize / 2, dates, width, height, shape);
+        currentY += datesFontSize * 1.8;
+      }
+      
+      // Цитата
+      if (quote) {
+        const quoteFontSize = surnameFontSize * 0.5;
+        ctx.font = `${fontData.style === 'italic' ? 'italic ' : ''}${fontData.weight} ${quoteFontSize}px "${fontData.name}"`;
+        const lines = wrapText(ctx, quote, maxWidth, quoteFontSize, fontData.name);
+        const lineHeight = quoteFontSize * 1.3;
+        const maxLines = Math.min(lines.length, Math.floor((height - currentY - 20) / lineHeight));
+        
+        lines.slice(0, maxLines).forEach((line, i) => {
+          drawTextInShape(centerX, currentY + lineHeight / 2 + i * lineHeight, line, width, height, shape);
+        });
+      }
+    }
+    
+    // Рассчитываем оптимальный размер шрифта
+    function calculateOptimalFontSize(ctx, text, maxWidth, maxSize, fontFamily, isBold = false) {
+      if (!text) return maxSize;
+      
+      let fontSize = maxSize;
+      const fontWeight = isBold ? 'bold ' : '';
+      
+      do {
+        ctx.font = `${fontWeight}${fontSize}px "${fontFamily}"`;
+        const textWidth = ctx.measureText(text).width;
+        
+        if (textWidth <= maxWidth) break;
+        fontSize -= 1;
+      } while (fontSize > 10);
+      
+      return fontSize;
+    }
+    
+    // Рисуем текст с учетом формы таблички
+    function drawTextInShape(x, y, text, width, height, shape) {
+      if (!text) return;
+      
+      if (shape === 'oval') {
+        const radiusX = width / 2 - 20;
+        const radiusY = height / 2 - 20;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        if (y > centerY - radiusY && y < centerY + radiusY) {
+          ctx.fillText(text, x, y);
+        }
+      } else {
+        ctx.fillText(text, x, y);
+      }
+    }
+    
+    // Перенос текста на несколько строк
+    function wrapText(ctx, text, maxWidth, fontSize, fontFamily) {
+      if (!text) return [];
+      
+      const words = text.split(' ');
+      const lines = [];
+      let currentLine = words[0];
+      
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine + ' ' + word;
+        const metrics = ctx.measureText(testLine);
+        const testWidth = metrics.width;
+        
+        if (testWidth < maxWidth) {
+          currentLine = testLine;
+        } else {
+          lines.push(currentLine);
+          currentLine = word;
+        }
+      }
+      
+      lines.push(currentLine);
+      return lines;
+    }
+    
+    // Скачивание изображения
+    function downloadCanvas() {
+      if (!surnameInput.value.trim()) {
+        showStatusMessage("Пожалуйста, введите фамилию", false);
+        surnameInput.focus();
+        return;
+      }
+      
+      loader.style.display = 'block';
+      downloadBtn.disabled = true;
+      
+      setTimeout(() => {
+        try {
+          const link = document.createElement('a');
+          const fileName = `mellem_${surnameInput.value.trim()}_${Date.now()}.png`;
+          link.download = fileName;
+          link.href = canvas.toDataURL('image/png', 1.0);
+          link.click();
+          
+          showStatusMessage("Табличка успешно скачана");
+        } catch (error) {
+          showStatusMessage("Ошибка при скачивании", false);
+          console.error("Download error:", error);
+        } finally {
+          loader.style.display = 'none';
+          downloadBtn.disabled = false;
+        }
+      }, 300);
+    }
+    
+    // Сброс формы
+    function resetForm() {
+      surnameInput.value = '';
+      nameInput.value = '';
+      patronymicInput.value = '';
+      datesInput.value = '';
+      quoteInput.value = fonts[0].quote;
+      shapeSelect.value = 'rectangle';
+      orientationSelect.value = 'horizontal';
+      sizeSelect.value = '9x12';
+      currentFont = 0;
+      fontSelect.selectedIndex = 0;
+      currentBgColor = '#ffffff';
+      currentTextColor = '#000000';
+      
+      // Обновляем активные цвета
+      document.querySelectorAll('.color-option').forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.color === currentBgColor || option.dataset.color === currentTextColor) {
+          option.classList.add('active');
+        }
+      });
+      
+      safeUpdateCanvas();
+      updateCounter();
+      showStatusMessage("Форма сброшена");
+    }
+    
+    // Инициализация
+    function init() {
+      updateCounter();
+      
+      // Обработчики событий для выбора цвета
+      document.querySelectorAll('.color-option[data-color]').forEach(option => {
+        option.addEventListener('click', function() {
+          const parentLabel = this.closest('label');
+          
+          if (parentLabel.textContent.includes('фона')) {
+            document.querySelectorAll('.color-option[data-color]').forEach(opt => {
+              if (opt.closest('label') === parentLabel) {
+                opt.classList.remove('active');
+              }
+            });
+            currentBgColor = this.dataset.color;
+          } else {
+            document.querySelectorAll('.color-option[data-color]').forEach(opt => {
+              if (opt.closest('label') === parentLabel) {
+                opt.classList.remove('active');
+              }
+            });
+            currentTextColor = this.dataset.color;
+          }
+          
+          this.classList.add('active');
+          safeUpdateCanvas();
+        });
+      });
+      
+      // Основные обработчики событий
+      shapeSelect.addEventListener('change', safeUpdateCanvas);
+      orientationSelect.addEventListener('change', safeUpdateCanvas);
+      sizeSelect.addEventListener('change', safeUpdateCanvas);
+      
+      fontSelect.addEventListener('change', () => {
+        currentFont = fontSelect.selectedIndex;
+        quoteInput.value = fonts[currentFont].quote;
+        safeUpdateCanvas();
+        updateCounter();
+      });
+      
+      [surnameInput, nameInput, patronymicInput, datesInput, quoteInput].forEach(input => {
+        input.addEventListener('input', safeUpdateCanvas);
+      });
+      
+      prevFontBtn.addEventListener('click', () => {
+        currentFont = currentFont > 0 ? currentFont - 1 : fonts.length - 1;
+        fontSelect.selectedIndex = currentFont;
+        quoteInput.value = fonts[currentFont].quote;
+        safeUpdateCanvas();
+        updateCounter();
+      });
+      
+      nextFontBtn.addEventListener('click', () => {
+        currentFont = currentFont < fonts.length - 1 ? currentFont + 1 : 0;
+        fontSelect.selectedIndex = currentFont;
+        quoteInput.value = fonts[currentFont].quote;
+        safeUpdateCanvas();
+        updateCounter();
+      });
+      
+      resetBtn.addEventListener('click', resetForm);
+      downloadBtn.addEventListener('click', downloadCanvas);
+      
+      // Проверка загрузки шрифтов
+      document.fonts.ready.then(() => {
+        fontsLoaded = true;
+        updateCanvas();
+      }).catch(error => {
+        console.error("Font loading error:", error);
+        fontsLoaded = checkFontsLoaded();
+        updateCanvas();
+      });
+      
+      // Первая отрисовка
+      safeUpdateCanvas();
+    }
+    
+    // Запускаем приложение
+    init();
+  </script>
+</body>
+</html>
