@@ -8,8 +8,8 @@ function Preview() {
 
   // Calculate dimensions based on custom size and orientation
   const getDimensions = () => {
-    const baseWidth = style.width * 40 // Scale factor for display
-    const baseHeight = style.height * 40
+    const baseWidth = style.width * 10 // Увеличенный масштаб для лучшего отображения
+    const baseHeight = style.height * 10
     
     return style.orientation === 'vertical' 
       ? { width: baseHeight, height: baseWidth }
@@ -19,34 +19,29 @@ function Preview() {
   const dimensions = getDimensions()
   const isOval = style.shape === 'oval'
 
-  // Limit display size for mobile
-  const maxDisplayWidth = Math.min(dimensions.width, 350)
-  const maxDisplayHeight = Math.min(dimensions.height, 280)
-  const scale = Math.min(maxDisplayWidth / dimensions.width, maxDisplayHeight / dimensions.height)
-
   // Auto-calculate font size based on plaque dimensions
   const calculateFontSize = () => {
     const area = (style.width * style.height)
-    const baseSize = Math.sqrt(area) * 1.8 // Adjust multiplier as needed
-    return Math.max(12, Math.min(48, baseSize)) // Min 12px, max 48px
+    const baseSize = Math.sqrt(area) * 2.5 // Увеличенный множитель для лучшей читаемости
+    return Math.max(16, Math.min(64, baseSize)) // Увеличенный диапазон
   }
 
   const autoFontSize = calculateFontSize()
 
   const plaqueStyle = {
-    width: `${dimensions.width * scale}px`,
-    height: `${dimensions.height * scale}px`,
+    width: `${dimensions.width}px`,
+    height: `${dimensions.height}px`,
     backgroundColor: '#ffffff',
     borderRadius: isOval ? '50%' : '12px',
     border: '3px solid #1f2937',
     fontFamily: style.fontFamily,
-    fontSize: `${autoFontSize * scale}px`,
+    fontSize: `${autoFontSize}px`,
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
   }
 
   return (
     <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 border border-slate-700">
-      <div className="flex items-center justify-center min-h-[300px]">
+      <div className="flex items-center justify-center min-h-[300px] overflow-auto">
         <div 
           ref={previewRef}
           data-preview="true"
@@ -62,14 +57,14 @@ function Preview() {
           
           {/* Dates */}
           {text.dates && (
-            <div className="mb-4 opacity-80" style={{ fontSize: `${autoFontSize * scale * 0.8}px` }}>
+            <div className="mb-4 opacity-80" style={{ fontSize: `${autoFontSize * 0.8}px` }}>
               {text.dates}
             </div>
           )}
           
           {/* Epitaph */}
           {text.epitaph && (
-            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${autoFontSize * scale * 0.6}px` }}>
+            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${autoFontSize * 0.6}px` }}>
               {text.epitaph}
             </div>
           )}
