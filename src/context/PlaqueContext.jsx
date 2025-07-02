@@ -10,7 +10,6 @@ const initialState = {
   },
   style: {
     fontFamily: 'Good Vibes Pro',
-    fontSize: 24,
     shape: 'rectangle',
     orientation: 'horizontal',
     width: 13,

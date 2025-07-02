@@ -75,25 +75,6 @@ function TextEditor() {
         </div>
       </div>
 
-      {/* Font Size */}
-      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        <h3 className="text-lg font-semibold text-white mb-4">Размер шрифта</h3>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-slate-300">{style.fontSize}px</span>
-            <div className="text-sm text-slate-400">12px - 48px</div>
-          </div>
-          <input
-            type="range"
-            min="12"
-            max="48"
-            value={style.fontSize}
-            onChange={(e) => handleStyleChange('fontSize', parseInt(e.target.value))}
-            className="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
-          />
-        </div>
-      </div>
-
       {/* Size Input */}
       <SizeInput 
         width={style.width}
@@ -113,9 +94,9 @@ function TextEditor() {
             </label>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { value: 'rectangle', label: 'Прямоугольная', icon: '▭' },
-                { value: 'oval', label: 'Овальная', icon: '⬭' }
-              ].map(({ value, label, icon }) => (
+                { value: 'rectangle', label: 'Прямоугольная' },
+                { value: 'oval', label: 'Овальная' }
+              ].map(({ value, label }) => (
                 <button
                   key={value}
                   onClick={() => handleStyleChange('shape', value)}
@@ -125,7 +106,6 @@ function TextEditor() {
                       : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
                   }`}
                 >
-                  <div className="text-2xl mb-1">{icon}</div>
                   <div className="text-sm font-medium">{label}</div>
                 </button>
               ))}
@@ -139,9 +119,9 @@ function TextEditor() {
             </label>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { value: 'horizontal', label: 'Горизонтальная', icon: '⬜' },
-                { value: 'vertical', label: 'Вертикальная', icon: '▬' }
-              ].map(({ value, label, icon }) => (
+                { value: 'horizontal', label: 'Горизонтальная' },
+                { value: 'vertical', label: 'Вертикальная' }
+              ].map(({ value, label }) => (
                 <button
                   key={value}
                   onClick={() => handleStyleChange('orientation', value)}
@@ -151,7 +131,6 @@ function TextEditor() {
                       : 'bg-slate-700 border-slate-600 text-slate-300 hover:bg-slate-600'
                   }`}
                 >
-                  <div className="text-2xl mb-1">{icon}</div>
                   <div className="text-sm font-medium">{label}</div>
                 </button>
               ))}

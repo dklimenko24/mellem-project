@@ -24,6 +24,15 @@ function Preview() {
   const maxDisplayHeight = Math.min(dimensions.height, 280)
   const scale = Math.min(maxDisplayWidth / dimensions.width, maxDisplayHeight / dimensions.height)
 
+  // Auto-calculate font size based on plaque dimensions
+  const calculateFontSize = () => {
+    const area = (style.width * style.height)
+    const baseSize = Math.sqrt(area) * 1.8 // Adjust multiplier as needed
+    return Math.max(12, Math.min(48, baseSize)) // Min 12px, max 48px
+  }
+
+  const autoFontSize = calculateFontSize()
+
   const plaqueStyle = {
     width: `${dimensions.width * scale}px`,
     height: `${dimensions.height * scale}px`,
@@ -31,7 +40,7 @@ function Preview() {
     borderRadius: isOval ? '50%' : '12px',
     border: '3px solid #1f2937',
     fontFamily: style.fontFamily,
-    fontSize: `${style.fontSize * scale}px`,
+    fontSize: `${autoFontSize * scale}px`,
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
   }
 
@@ -53,14 +62,14 @@ function Preview() {
           
           {/* Dates */}
           {text.dates && (
-            <div className="mb-4 opacity-80" style={{ fontSize: `${style.fontSize * scale * 0.8}px` }}>
+            <div className="mb-4 opacity-80" style={{ fontSize: `${autoFontSize * scale * 0.8}px` }}>
               {text.dates}
             </div>
           )}
           
           {/* Epitaph */}
           {text.epitaph && (
-            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${style.fontSize * scale * 0.6}px` }}>
+            <div className="italic opacity-70 leading-relaxed whitespace-pre-line" style={{ fontSize: `${autoFontSize * scale * 0.6}px` }}>
               {text.epitaph}
             </div>
           )}
