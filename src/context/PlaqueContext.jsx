@@ -7,6 +7,13 @@ const initialState = {
     fullName: 'Петрова Ирина Васильевна',
     dates: '12.03.1898 – 14.05.1973',
     epitaph: 'Сердце помнит даже то,\nчто глаза больше не видят.'
+  },
+  style: {
+    fontFamily: 'Good Vibes Pro',
+    fontSize: 24,
+    shape: 'rectangle',
+    orientation: 'horizontal',
+    size: '13x18'
   }
 }
 
@@ -16,6 +23,11 @@ function plaqueReducer(state, action) {
       return {
         ...state,
         text: { ...state.text, [action.field]: action.value }
+      }
+    case 'UPDATE_STYLE':
+      return {
+        ...state,
+        style: { ...state.style, [action.field]: action.value }
       }
     case 'RESET':
       return initialState
